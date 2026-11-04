@@ -1,0 +1,39 @@
+name: ProfileCraft
+version: '${project.version}'
+main: fr.profilecraft.ProfileCraft
+api-version: '26.3'
+description: Profils de joueurs, têtes de joueurs tués, liaison Discord et pont de chat Minecraft <-> Discord
+authors: [ProfileCraft]
+softdepend: [LuckPerms]
+
+commands:
+  profile:
+    description: Affiche le profil d'un joueur
+    usage: /profile [joueur]
+    aliases: [profil]
+  head:
+    description: Menu des têtes des joueurs que vous avez tués
+    usage: /head
+    aliases: [tete, tetes, heads]
+  link:
+    description: Lier votre compte Minecraft à Discord
+    usage: /link <discord|unlink|status>
+  profilecraft:
+    description: Administration de ProfileCraft
+    usage: /profilecraft <reload|unlink <joueur>|status>
+    aliases: [pc]
+    permission: profilecraft.admin
+
+permissions:
+  profilecraft.profile:
+    description: Voir les profils (shift + clic droit, /profile)
+    default: true
+  profilecraft.head:
+    description: Utiliser /head
+    default: true
+  profilecraft.link:
+    description: Utiliser /link
+    default: true
+  profilecraft.admin:
+    description: Administration de ProfileCraft
+    default: op

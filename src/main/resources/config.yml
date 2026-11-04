@@ -1,0 +1,54 @@
+# ======================================================================
+#  ProfileCraft - configuration
+#  Textes au format MiniMessage (<red>, <gold>, <bold>...)
+# ======================================================================
+prefix: "<dark_gray>[<aqua>Profil<dark_gray>] <gray>"
+
+# --- Profil (shift + clic droit sur un joueur, ou /profile <joueur>) ----
+profile:
+  shift-click: true
+  show-discord: true        # affiche le compte Discord lié dans le profil
+
+# --- Têtes ---------------------------------------------------------------
+heads:
+  drop:
+    enabled: true
+    chance: 100             # % de chance de drop la tête de la victime
+    only-pvp: true          # true = uniquement quand un joueur tue un autre joueur
+  menu:
+    # unlimited : cliquer donne une copie de la tête, sans limite
+    # per-kill  : une tête récupérable par kill (le drop physique ne compte pas)
+    # view-only : le menu sert de collection, on ne peut pas récupérer les têtes
+    claim-mode: unlimited
+
+# --- Discord --------------------------------------------------------------
+# Guide complet dans le README (création du bot, intents, IDs, invitation).
+discord:
+  enabled: false
+  token: ""                 # ou variable d'environnement DISCORD_TOKEN (recommandé)
+  guild-id: ""              # ID du serveur Discord
+  admin-channel-id: ""      # Salon Discord réservé aux commandes admin (/annonce)
+  admin-role-id: ""         # ID du rôle admin autorisé (les administrateurs Discord le sont toujours)
+  member-role-id: ""        # ID du rôle "Membre" donné après liaison (vide = aucun rôle)
+  invite-url: "https://discord.gg/VOTRE-INVITATION"
+  link-code-minutes: 10     # durée de validité du code /link
+  remind-on-join: true      # rappelle aux joueurs non liés de faire /link discord
+  sync-nickname: false      # renomme le membre Discord avec son pseudo Minecraft (permission "Gérer les pseudos")
+  activity: ""              # statut du bot, ex: "play.monserveur.fr" (vide = aucun)
+  # Commandes console exécutées à la liaison (%player% = pseudo). Ex : ["eco give %player% 1000"]
+  link-commands: []
+
+  chat:
+    channel-id: ""          # ID du salon du pont de chat (vide = pas de pont)
+    minecraft-to-discord: true
+    discord-to-minecraft: true
+    # Format côté Discord. Variables : {prefix} {name} {message}
+    mc-format: "{prefix}**{name}** » {message}"
+    # Format côté Minecraft (MiniMessage). Variables : <name> <message>
+    discord-format: "<blue>[Discord]</blue> <gray><name></gray> <dark_gray>»</dark_gray> <white><message>"
+    use-minecraft-name-if-linked: true
+    events:
+      join: true
+      quit: true
+      death: true
+      server-start-stop: true
